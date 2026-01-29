@@ -2,37 +2,28 @@ package main.java.com.example;
 
 public class Calculator {
 
-    // Code Smell: Long method + high complexity
     public int calculate(int a, int b, String op) {
+        switch (op) {
+            case "add", "add-again":
+                return a + b;
 
-        if(op.equals("add")) {
-            return a + b;
-        }
-        if(op.equals("sub")) {
-            return a - b;
-        }
-        if(op.equals("mul")) {
-            return a * b;
-        }
-        if(op.equals("div")) {
-            if(b == 0) {
+            case "sub", "sub-again":
+                return a - b;
+
+            case "mul", "mul-again":
+                return a * b;
+
+            case "div", "div-again":
+                return (b == 0) ? 0 : a / b;
+
+            case "mod":
+                return a % b;
+
+            case "pow":
+                return (int) Math.pow(a, b);
+
+            default:
                 return 0;
-            }
-            return a / b;
         }
-        if(op.equals("mod")) {
-            return a % b;
-        }
-
-        return 0;
-    }
-
-    // Code Duplication (students must remove)
-    public int addNumbers(int x, int y) {
-        return x + y;
-    }
-
-    public int sumValues(int a, int b) {
-        return a + b;
     }
 }
